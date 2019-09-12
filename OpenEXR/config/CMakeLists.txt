@@ -50,7 +50,6 @@ if(APPLE)
 endif()
 
 find_package(ZLIB REQUIRED)
-set_target_properties(ZLIB::ZLIB PROPERTIES IMPORTED_GLOBAL TRUE)
 
 # so we know how to link / use...
 if(NOT TARGET Threads::Threads)

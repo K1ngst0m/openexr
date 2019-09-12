@@ -25,7 +25,6 @@ set(THREADS_PREFER_PTHREAD_FLAG TRUE)
 find_package(Threads)
 ###check_include_files(pthread.h ILMBASE_HAVE_PTHREAD)
 if(Threads_FOUND)
-  set_target_properties(Threads::Threads PROPERTIES IMPORTED_GLOBAL TRUE)
   if(CMAKE_HAVE_PTHREAD_H OR CMAKE_USE_PTHREADS_INIT OR CMAKE_HP_PTHREAD_INIT)
     set(ILMBASE_HAVE_PTHREAD ON)
     # TODO: remove this once we cleanly have ILMBASE_ prefix on all #defines
