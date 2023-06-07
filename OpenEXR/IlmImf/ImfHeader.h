@@ -2,9 +2,9 @@
 //
 // Copyright (c) 2004, Industrial Light & Magic, a division of Lucas
 // Digital Ltd. LLC
-// 
+//
 // All rights reserved.
-// 
+//
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions are
 // met:
@@ -16,8 +16,8 @@
 // distribution.
 // *       Neither the name of Industrial Light & Magic nor the names of
 // its contributors may be used to endorse or promote products derived
-// from this software without specific prior written permission. 
-// 
+// from this software without specific prior written permission.
+//
 // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
 // "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
 // LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
@@ -59,6 +59,7 @@
 #include <map>
 #include <iosfwd>
 #include <string>
+#include <cstdint>
 
 
 OPENEXR_IMF_INTERNAL_NAMESPACE_HEADER_ENTER
@@ -69,7 +70,7 @@ using std::string;
 class Header
 {
   public:
-    
+
     //----------------------------------------------------------------
     // Default constructor -- the display window and the data window
     // are both set to Box2i (V2i (0, 0), V2i (width-1, height-1).
@@ -182,8 +183,8 @@ class Header
     IMF_EXPORT
     void                        erase (const std::string &name);
 
-    
-    
+
+
     //------------------------------------------------------------------
     // Access to existing attributes:
     //
@@ -353,7 +354,7 @@ class Header
     IMF_EXPORT
     int &                       chunkCount();
 
-    
+
     //
     // for multipart files, return whether the file has a view string attribute
     // (for the deprecated single part multiview format EXR, see ImfMultiView.h)
@@ -366,7 +367,7 @@ class Header
     string &                   view();
     IMF_EXPORT
     const string &             view() const;
-    
+
 
     //----------------------------------------------------------------------
     // Tile Description:
@@ -454,7 +455,7 @@ class Header
     // sanityCheck() will throw an exception if the width or height of
     // the data window exceeds the maximum image width or height, or
     // if the size of a tile exceeds the maximum tile width or height.
-    // 
+    //
     // At program startup the maximum image and tile width and height
     // are set to zero, meaning that width and height are unlimited.
     //
@@ -494,7 +495,7 @@ class Header
     IMF_EXPORT
     void			readFrom (OPENEXR_IMF_INTERNAL_NAMESPACE::IStream &is,
         			          int &version);
-    
+
 
   private:
 
@@ -601,7 +602,7 @@ Header::Iterator::Iterator (const Header::AttributeMap::iterator &i): _i (i)
 }
 
 
-inline Header::Iterator &		
+inline Header::Iterator &
 Header::Iterator::operator ++ ()
 {
     ++_i;
@@ -609,7 +610,7 @@ Header::Iterator::operator ++ ()
 }
 
 
-inline Header::Iterator 	
+inline Header::Iterator
 Header::Iterator::operator ++ (int)
 {
     Iterator tmp = *this;
@@ -625,7 +626,7 @@ Header::Iterator::name () const
 }
 
 
-inline Attribute &	
+inline Attribute &
 Header::Iterator::attribute () const
 {
     return *_i->second;
@@ -661,7 +662,7 @@ Header::ConstIterator::operator ++ ()
 }
 
 
-inline Header::ConstIterator 		
+inline Header::ConstIterator
 Header::ConstIterator::operator ++ (int)
 {
     ConstIterator tmp = *this;
@@ -677,7 +678,7 @@ Header::ConstIterator::name () const
 }
 
 
-inline const Attribute &	
+inline const Attribute &
 Header::ConstIterator::attribute () const
 {
     return *_i->second;
